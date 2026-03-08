@@ -1,0 +1,43 @@
+const TOKEN_KEY = 'token'
+const USER_INFO_KEY = 'userInfo'
+
+export function getToken(): string | null {
+  return localStorage.getItem(TOKEN_KEY)
+}
+
+export function setToken(token: string): void {
+  localStorage.setItem(TOKEN_KEY, token)
+}
+
+export function removeToken(): void {
+  localStorage.removeItem(TOKEN_KEY)
+}
+
+export interface UserInfo {
+  userId: string
+  userCode: string
+  userName: string
+  orgId: string
+  orgName: string
+  authLevel: number
+  menus: any[]
+  permissions: string[]
+}
+
+export function getUserInfo(): UserInfo | null {
+  const userInfo = localStorage.getItem(USER_INFO_KEY)
+  return userInfo ? JSON.parse(userInfo) : null
+}
+
+export function setUserInfo(userInfo: UserInfo): void {
+  localStorage.setItem(USER_INFO_KEY, JSON.stringify(userInfo))
+}
+
+export function removeUserInfo(): void {
+  localStorage.removeItem(USER_INFO_KEY)
+}
+
+export function clearAuth(): void {
+  removeToken()
+  removeUserInfo()
+}

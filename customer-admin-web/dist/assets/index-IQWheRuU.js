@@ -1,0 +1,1 @@
+import{d as s,k as a,o as n,c as r,e as c,u}from"./index-BLgHMUUs.js";const d=s({__name:"index",setup(p){const o=c(),t=u();return a(()=>{const e=o.query.path;e?t.replace(e):t.replace("/")}),(e,_)=>(n(),r("div"))}});export{d as default};

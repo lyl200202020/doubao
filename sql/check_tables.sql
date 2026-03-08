@@ -1,0 +1,2 @@
+USE cust;
+SHOW TABLES;

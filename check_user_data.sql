@@ -1,0 +1,1 @@
+SELECT userId, userCode, userName, orgId, roleId, authLevel, userStatus FROM sys_user LIMIT 10;

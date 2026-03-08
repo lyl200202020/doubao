@@ -1,0 +1,1 @@
+SELECT user_id, user_code, username, real_name, password, user_status FROM sys_user WHERE user_code = 'admin';

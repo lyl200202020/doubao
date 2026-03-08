@@ -1,0 +1,37 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: admin-platform
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://113.221.57.26:3306/cust?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: app
+    password: '123456'
+  data:
+    redis:
+      host: 113.221.57.26
+      port: 6379
+      password: mm123456
+      database: 0
+      timeout: 5000ms
+
+jwt:
+  secret-key: customer-admin-jwt-secret-key-2024-auth-platform-prod
+  expiration: 86400000
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  type-aliases-package: com.company.admin.platform.**.domain.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: assign_uuid
+
+logging:
+  level:
+    com.company.admin.platform.sys: DEBUG
+    org.springframework.security: DEBUG

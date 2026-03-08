@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.admin.platform.sys.infrastructure.dao.SysUserDao">
+
+    <resultMap id="BaseResultMap" type="com.company.admin.platform.sys.domain.entity.SysUser">
+        <id column="user_id" property="userId"/>
+        <result column="user_code" property="userCode"/>
+        <result column="username" property="username"/>
+        <result column="real_name" property="realName"/>
+        <result column="password" property="password"/>
+        <result column="mobile" property="mobile"/>
+        <result column="email" property="email"/>
+        <result column="org_id" property="orgId"/>
+        <result column="role_id" property="roleId"/>
+        <result column="auth_level" property="authLevel"/>
+        <result column="user_status" property="userStatus"/>
+        <result column="last_login_time" property="lastLoginTime"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <select id="pageByCondition" resultMap="BaseResultMap">
+        SELECT * FROM sys_user
+        <where>
+            deleted = 0
+            <if test="orgId != null and orgId != ''">
+                AND org_id = #{orgId}
+            </if>
+            <if test="roleId != null and roleId != ''">
+                AND role_id = #{roleId}
+            </if>
+            <if test="userStatus != null">
+                AND user_status = #{userStatus}
+            </if>
+            <if test="userName != null and userName != ''">
+                AND (real_name LIKE CONCAT('%', #{userName}, '%') OR username LIKE CONCAT('%', #{userName}, '%'))
+            </if>
+        </where>
+        ORDER BY create_time DESC
+    </select>
+
+</mapper>

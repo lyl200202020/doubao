@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.admin.platform.sys.infrastructure.dao.SysRoleDao">
+
+    <resultMap id="BaseResultMap" type="com.company.admin.platform.sys.domain.entity.SysRole">
+        <id column="role_id" property="roleId"/>
+        <result column="role_code" property="roleCode"/>
+        <result column="role_name" property="roleName"/>
+        <result column="role_status" property="roleStatus"/>
+        <result column="remark" property="remark"/>
+        <result column="created_by" property="createdBy"/>
+        <result column="created_time" property="createdTime"/>
+        <result column="updated_by" property="updatedBy"/>
+        <result column="updated_time" property="updatedTime"/>
+    </resultMap>
+
+    <select id="pageByCondition" resultMap="BaseResultMap">
+        SELECT * FROM sys_role
+        <where>
+            deleted = 0
+            <if test="roleStatus != null">
+                AND role_status = #{roleStatus}
+            </if>
+            <if test="roleName != null and roleName != ''">
+                AND role_name LIKE CONCAT('%', #{roleName}, '%')
+            </if>
+        </where>
+        ORDER BY created_time DESC
+    </select>
+
+</mapper>

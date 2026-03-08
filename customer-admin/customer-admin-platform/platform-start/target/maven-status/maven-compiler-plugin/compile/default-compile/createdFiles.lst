@@ -1,0 +1,5 @@
+com\company\admin\platform\config\MybatisPlusConfig.class
+com\company\admin\platform\config\SwaggerConfig.class
+com\company\admin\platform\config\GlobalExceptionHandler.class
+com\company\admin\platform\config\RedisConfig.class
+com\company\admin\platform\PlatformApplication.class
